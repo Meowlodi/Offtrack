@@ -1,31 +1,32 @@
 import { StyleSheet, Text, View, Button, Alert, ImageBackground, Pressable } from 'react-native'
-import React from 'react'
+import { useRouter } from 'expo-router'
 
 export default function App() {
-  return (
-    <ImageBackground
-    source={require("../assets/images/background.png")}
-    style={styles.background}
-    >
-    <View style={styles.container}>
-        <Text style= {styles.name}>Offtrack</Text>
-      <Text style={styles.title}>Explore a new world with us</Text>
+    const router = useRouter()
+    return (
+        <ImageBackground
+            source={require("../assets/images/background.png")}
+            style={styles.background}
+        >
+            <View style={styles.container}>
+                <Text style={styles.name}>Offtrack</Text>
+                <Text style={styles.title}>Explore a new world with us</Text>
 
-      <View style={styles.buttonView}>
-        <Pressable style={styles.buttonBorder}>
-            <Text style= {styles.buttonText}>Login</Text>
-        </Pressable>
-        <Pressable style={styles.buttonBorder}>
-            <Text style= {styles.buttonText}>Register</Text>
-        </Pressable>
-        </View>
-    </View>
-    </ImageBackground>
-  )
+                <View style={styles.buttonView}>
+                    <Pressable style={styles.buttonBorder} onPress={() => router.push("/screens/auth/login")}>
+                        <Text style={styles.buttonText}>Login</Text>
+                    </Pressable>
+                    <Pressable style={styles.buttonBorder} onPress={() => router.push("/screens/auth/register")}>
+                        <Text style={styles.buttonText}>Register</Text>
+                    </Pressable>
+                </View>
+            </View>
+        </ImageBackground>
+    )
 }
 
 const styles = StyleSheet.create({
-   name:{
+    name: {
         color: "black",
         fontsize: 25,
         marginTop: 60,
@@ -40,14 +41,14 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: "space-between",
-      padding: 20   
-        
+        padding: 20
+
     },
     background: {
         flex: 1,
         resizeMode: "cover"
     },
-    buttonBorder:{
+    buttonBorder: {
         backgroundColor: 'black',
         paddingVertical: 10,
         paddingHorizontal: 20,
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         marginTop: 4
     },
-    buttonText:{
+    buttonText: {
         color: 'white',
         fontSize: 16,
         fontWeight: 'bold',
