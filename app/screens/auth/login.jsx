@@ -4,6 +4,10 @@ import { useRouter } from "expo-router";
 export default function LoginScreen() {
     const router = useRouter();
 
+    const handleLogin = () => {
+        router.push("/screens/tabs/home");
+    };
+
     return (
         <ImageBackground
             source={require("../../../assets/images/loginBackground.png")}
@@ -19,12 +23,15 @@ export default function LoginScreen() {
                 <TextInput style={styles.input} placeholder="Email Address" placeholderTextColor="#000" />
                 <TextInput style={styles.input} placeholder="Password" placeholderTextColor="#000" secureTextEntry />
 
-                <Pressable style={styles.loginButton}>
+                <Pressable style={styles.loginButton} onPress={handleLogin}>
                     <Text style={styles.loginButtonText}>LOGIN</Text>
                 </Pressable>
 
                 <Text style={styles.signUpText}>
-                    Don’t have an account? <Text style={styles.signUpLink} onPress={() => router.push("/screens/auth/register")}>Sign up</Text>
+                    Don’t have an account?{" "}
+                    <Text style={styles.signUpLink} onPress={() => router.push("/screens/auth/register")}>
+                        Sign up
+                    </Text>
                 </Text>
             </View>
         </ImageBackground>

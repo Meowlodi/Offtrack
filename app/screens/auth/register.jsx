@@ -4,6 +4,10 @@ import { useRouter } from "expo-router";
 export default function RegisterScreen() {
     const router = useRouter();
 
+    const handleRegister = () => {
+        router.push("/screens/tabs/home");
+    };
+
     return (
         <ImageBackground
             source={require("../../../assets/images/registerBackground.png")}
@@ -20,7 +24,7 @@ export default function RegisterScreen() {
                 <TextInput style={styles.input} placeholder="Password" placeholderTextColor="#000" secureTextEntry />
                 <TextInput style={styles.input} placeholder="Confirm Password" placeholderTextColor="#000" secureTextEntry />
 
-                <Pressable style={styles.registerButton}>
+                <Pressable style={styles.registerButton} onPress={handleRegister}>
                     <Text style={styles.registerButtonText}>CREATE ACCOUNT</Text>
                 </Pressable>
 
